@@ -13,7 +13,7 @@ def post_root():
     return Response(json.dumps({'Output': 'Hello Post World'}), mimetype='application/json', status=200)
 
 
-@application.route('/calc/currency/<string:currency>', methods=['POST'])
+@application.route('/calc/currency/<string:currency>', methods=['GET'])
 def post_currency(currency):
     res = currency_rate.get(currency, 0.00) 
     return Response(json.dumps({currency: res}), mimetype='application/json', status=200)
