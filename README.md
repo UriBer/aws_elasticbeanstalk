@@ -27,3 +27,8 @@ When modifying files use to update
 eb deploy flask-hellos
 in the end when we're all finished terminate the machines and delete them:
 eb terminate flask-hellos
+
+--- assignment
+1. create new get api that gets data from get_bitcoin_index() and outputs the 
+   rates to the user similar to the mock api endpoint /calc/currency/.
+2. create api endpoint that gets currency and amount and return the result.

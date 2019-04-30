@@ -1,4 +1,5 @@
 from flask import Flask, Response, request
+import requests
 import json
 
 application = Flask(__name__)
@@ -15,6 +16,7 @@ def post_root():
 
 @application.route('/calc/currency/<string:currency>', methods=['GET'])
 def post_currency(currency):
+    print (get_bitcoin_index())
     res = currency_rate.get(currency, 0.00) 
     return Response(json.dumps({currency: res}), mimetype='application/json', status=200)
 
@@ -25,6 +27,10 @@ currency_rate = {
     'euro' : 4.8
 }
 
+def get_bitcoin_index():
+    url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
+    response = requests.get(url).json()['bpi']['USD']
+    return response
 
 if __name__ == "__main__":
     application.debug = True
