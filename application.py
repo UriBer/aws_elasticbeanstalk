@@ -21,7 +21,8 @@ def post_currency(currency):
 
 currency_rate = {
     'usd' : 3.3,
-    'pound' : 4.5
+    'pound' : 4.5,
+    'euro' : 4.8
 }
 
 
