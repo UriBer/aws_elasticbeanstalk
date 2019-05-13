@@ -12,7 +12,10 @@ def get_root():
 def post_root():
     return Response(json.dumps({'Output': 'Hello Post World'}), mimetype='application/json', status=200)
 
-
+# test
+# curl 127.0.0.1:5000/calc/currency/euro 
+# curl 127.0.0.1:5000/calc/currency/usd
+# curl 127.0.0.1:5000/calc/currency/pound
 @application.route('/calc/currency/<string:currency>', methods=['GET'])
 def post_currency(currency):
     res = currency_rate.get(currency, 0.00) 
