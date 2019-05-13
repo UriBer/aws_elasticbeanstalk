@@ -16,6 +16,8 @@ pull the repo and do the following
 5. python application.py 
 6. curl 127.0.0.1:5000
 7. curl -X POST 127.0.0.1:5000
+8. curl 127.0.0.1:5000/calc/currency/usd
+8. curl 127.0.0.1:5000/calc/bit
 
 in order to deploy to elasticbeanstalk
 

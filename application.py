@@ -16,7 +16,6 @@ def post_root():
 
 @application.route('/calc/currency/<string:currency>', methods=['GET'])
 def post_currency(currency):
-    print (get_bitcoin_index())
     res = currency_rate.get(currency, 0.00) 
     return Response(json.dumps({currency: res}), mimetype='application/json', status=200)
 
@@ -26,6 +25,11 @@ currency_rate = {
     'pound' : 4.5,
     'euro' : 4.8
 }
+
+@application.route('/calc/bit', methods=['GET'])
+def post_currency_bit():
+    return Response(json.dumps(get_bitcoin_index()), mimetype='application/json', status=200)
+
 
 def get_bitcoin_index():
     url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
