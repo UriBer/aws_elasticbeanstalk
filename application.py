@@ -19,6 +19,7 @@ def get_currency(currency):
     res = currency_rate.get(currency, 0.00) 
     return Response(json.dumps({currency: res}), mimetype='application/json', status=200)
 
+
 # get example for multiplication
 # test get  
 # curl -i http://"localhost:5000/v1/multiply?first_num=12.1&second_num=12"
@@ -58,11 +59,7 @@ def get_multiplication_res():
     res = float(first_num) * float(second_num) 
     return Response(json.dumps({'multiplication result': res}), mimetype='application/json', status=200)
 
-# post example
-# test
-
-
-
+# mock data
 currency_rate = {
     'usd' : 3.3,
     'pound' : 4.5,
