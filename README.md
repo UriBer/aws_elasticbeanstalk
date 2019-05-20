@@ -1,10 +1,3 @@
-     __          _______    _____                          
-    /\ \        / / ____|  / ____|                         
-   /  \ \  /\  / / (___   | |     ___  _   _ _ __ ___  ___ 
-  / /\ \ \/  \/ / \___ \  | |    / _ \| | | | '__/ __|/ _ \
- / ____ \  /\  /  ____) | | |___| (_) | |_| | |  \__ \  __/
-/_/    \_\/  \/  |_____/   \_____\___/ \__,_|_|  |___/\___|
-
 Welcome!
 ---------
 
@@ -18,6 +11,7 @@ pull the repo and do the following
 7. curl -X POST 127.0.0.1:5000
 8. curl 127.0.0.1:5000/calc/currency/usd
 8. curl 127.0.0.1:5000/calc/bit
+see curl examples: https://www.keycdn.com/support/popular-curl-examples
 
 in order to deploy to elasticbeanstalk
 
