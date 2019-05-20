@@ -51,7 +51,7 @@ def get_multiplication_res():
        data_dict = json.loads(data)
        # retreive the parameters
        first_num = data_dict.get('first_num',0)
-       second_num =  data_dict.get('second_num',0)
+       second_num = data_dict.get('second_num',0)
     # if request method is not post (assuming get)
     else:
        first_num = request.args.get('first_num')
