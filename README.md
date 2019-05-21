@@ -31,6 +31,7 @@ please check your user in iam for the role: aws-elasticbeanstalk-ec2-role
 see also: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-instanceprofile.html
 
 When modifying files use to update
+------
 eb deploy flask-hellos
 in the end when we're all finished terminate the machines and delete them:
 eb terminate flask-hellos
