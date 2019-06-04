@@ -24,23 +24,13 @@ def get_currency(currency):
 # test get  
 # curl -i http://"localhost:5000/v1/multiply?first_num=12.1&second_num=12"
 
-@application.route('/v1/multiply', methods=['GET', 'POST'])
+@application.route('/v1/multiply', methods=['GET'])
 def get_mult_res():
-    
     first_num = request.args.get('first_num')
     second_num = request.args.get('second_num')
     res = float(first_num) * float(second_num) 
     return Response(json.dumps({'multiplication result': res}), mimetype='application/json', status=200)
 
-
-@application.route('/v1/add', methods=['GET', 'POST'])
-def get_add_res():
-    print('entering addition')
-    first_num = request.args.get('first_num')
-    second_num = request.args.get('second_num')
-    res = float(first_num) + float(second_num) 
-    print(res)
-    return Response(json.dumps({'addition result': res}), mimetype='application/json', status=200)
 
 # mutiple methods handling
 # get example
@@ -85,6 +75,22 @@ def get_bitcoin_index():
     url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
     response = requests.get(url).json()['bpi']['USD']
     return response
+
+
+@application.route('/open/<string:num>', methods=['GET'])
+def open_api(num):
+    #return Response(json.dumps(get_open_api(num)), mimetype='application/json', status=200)
+    return Response(get_open_api(num), mimetype='application/json', status=200)
+
+def get_open_api(num):
+    url = 'http://numbersapi.com/' + str(num)
+    url = 'https://api.exchangeratesapi.io/latest?symbols=USD,GBP'
+    url = 'https://api.genderize.io/?name={}'.format(num) 
+    print(url)
+    response = requests.get(url)
+    print(response)
+    return response
+
 
 if __name__ == "__main__":
     application.debug = True
