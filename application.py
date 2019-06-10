@@ -1,8 +1,10 @@
 from flask import Flask, Response, request
 import requests
 import json
+from flask_cors import CORS
 
 application = Flask(__name__)
+CORS(application, resources={r"/*": {"origins": "*"}})
 
 @application.route('/', methods=['GET'])
 def get_root():
