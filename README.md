@@ -36,6 +36,15 @@ eb deploy flask-hellos
 in the end when we're all finished terminate the machines and delete them:
 eb terminate flask-hellos
 
+adding dynamodb support
+---------
+dynamodb requires permission, the role that the eb2 insatnce is running under should
+be attached to dynamodb role
+1.go to iam and  choose in roles: aws-elasticbeanstalk-ec2-role
+2. click attach policy and choose AmazonDynamoDBFullAccess
+3. the policy will come into effect within several minutes
+
+
 assignment
 ---------
 before you'll do the assignment, please pull the latest version of the repo
@@ -43,3 +52,4 @@ using git pull https://github.com/UriBer/aws_elasticbeanstalk.git
 1. create api endpoint that gets currency and amount and return the result.
 2. create new get api that gets data from an open api and outputs the 
    data.
+
