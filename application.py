@@ -2,6 +2,7 @@ from flask import Flask, Response, request
 import requests
 import json
 from flask_cors import CORS
+import boto3
 
 application = Flask(__name__)
 CORS(application, resources={r"/*": {"origins": "*"}})
@@ -111,6 +112,41 @@ def get_bitcoin_index():
     url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
     response = requests.get(url).json()['bpi']['USD']
     return response
+
+
+@application.route('/get_forms', methods=['GET'])
+def get():
+    dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+    table = dynamodb.Table('form')
+    # replace table scan
+    resp = table.scan()
+    print(str(resp))
+    return Response(json.dumps(str(resp['Items'])), mimetype='application/json', status=200)
+
+
+# curl -i -X POST -d'{"form_title":"form title1", "form_body":"where is it?"}' -H "Content-Type: application/json" http://localhost:5000/set_form/frm4
+@application.route('/set_form/<frm_id>', methods=['POST'])
+def get_temp(frm_id):
+    
+    dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+    table = dynamodb.Table('form')
+    # get post data  
+    data = request.data
+    # convert the json to dictionary
+    data_dict = json.loads(data)
+    # retreive the parameters
+    form_body = data_dict.get('form_body','default')
+    form_title = data_dict.get('form_title','defualt')
+
+    item={
+    'form_id': frm_id,
+    'form_body': form_body,
+    'form_title': form_title 
+     }
+    table.put_item(Item=item)
+    
+    return Response(json.dumps(item), mimetype='application/json', status=200)
+
 
 if __name__ == "__main__":
     application.debug = True
