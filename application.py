@@ -139,9 +139,9 @@ def get_temp(frm_id):
     form_title = data_dict.get('form_title','defualt')
 
     item={
-    'form_id': frm_id,
-    'form_body': form_body,
-    'form_title': form_title 
+    'id': frm_id,
+    'body': form_body,
+    'title': form_title 
      }
     table.put_item(Item=item)
     
