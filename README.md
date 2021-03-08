@@ -19,8 +19,8 @@ pull the repo and do the following
 
 in order to deploy to elasticbeanstalk
 
-1. pip install awsebcli --upgrade
-2. eb init -p python-3.6 flask-api-demo --region us-east-2
+1. pip3 install awsebcli --upgrade
+2. eb init -p python-3.7 flask-api-demo --region us-east-1
 3. eb create flask-hellos
 
 When modifying files use to update
