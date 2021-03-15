@@ -10,7 +10,7 @@ def get_root():
 
 @application.route('/', methods=['POST'])
 def post_root():
-    return Response(json.dumps({'Output': 'Hello Post World'}), mimetype='application/json', status=200)
+    return Response(json.dumps({'Output': 'Hello Post! World'}), mimetype='application/json', status=200)
 
 
 @application.route('/chilki', methods=['POST'])
